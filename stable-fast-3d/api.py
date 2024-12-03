@@ -1,9 +1,12 @@
-from fastapi import FastAPI, File, UploadFile, FileResponse
+import tempfile
+
+from fastapi import FastAPI, File, UploadFile
+from fastapi.responses import FileResponse
+from PIL import Image
+import torch
+
 from sf3d.system import SF3D
 import sf3d.utils as sf3d_utils
-from PIL import Image
-import tempfile
-import torch
 
 app = FastAPI()
 
@@ -33,4 +36,4 @@ async def generate_mesh(image: UploadFile = File(...)):
     tmp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".glb")
     mesh.export(tmp_file.name, include_normals=True)
 
-    return FileResponse(tmp_file.name, media_type="model/gltf-binary", filename="mesh.glb") 
+    return FileResponse(tmp_file.name, media_type="model/gltf-binary", filename="mesh.glb")

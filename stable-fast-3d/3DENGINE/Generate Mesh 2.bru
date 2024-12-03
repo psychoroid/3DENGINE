@@ -1,0 +1,15 @@
+meta {
+  name: Generate Mesh 2
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://127.0.0.1:8000/generate_mesh
+  body: multipartForm
+  auth: none
+}
+
+body:multipart-form {
+  image: @file(/Users/babacar/Projects/3D_tool/stable-fast-3d/demo_files/examples/axe.png)
+}
