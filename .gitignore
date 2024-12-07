@@ -1,0 +1,84 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.env
+*_env/
+sf3d_env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.vs/
+
+# TRELLIS specific
+TRELLIS/output_meshes/
+TRELLIS/*.glb
+TRELLIS/*.mp4
+TRELLIS/assets/output/
+TRELLIS/__pycache__/
+TRELLIS/**/__pycache__/
+
+# Stable-fast-3d specific
+stable-fast-3d/output/
+stable-fast-3d/*.glb
+stable-fast-3d/__pycache__/
+stable-fast-3d/**/__pycache__/
+stable-fast-3d/sf3d_env/
+
+# Model weights and checkpoints
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+weights/
+checkpoints/
+
+# Generated content
+output/
+*.mp4
+*.glb
+*.obj
+*.mtl
+*.png
+*.jpg
+!assets/**/*.png
+!assets/**/*.jpg
+
+# Logs
+*.log
+logs/
+tensorboard/
+
+# OS
+.DS_Store
+Thumbs.db
+.directory
+EOL

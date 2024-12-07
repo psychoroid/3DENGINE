@@ -48,7 +48,7 @@ except Exception as e:
 
 # Create output directory
 OUTPUT_DIR = Path("output_meshes")
-OUTPUT_DIR.mkdir(exist_ok=True)
+OUTPUT_DIR.mkdir(exist_ok=True, parents=True)
 
 @app.post("/generate_mesh")
 async def generate_mesh(image: UploadFile = File(...)):
@@ -88,21 +88,10 @@ async def generate_mesh(image: UploadFile = File(...)):
             logger.error(f"Error during mesh generation: {str(e)}")
             raise HTTPException(status_code=500, detail=f"Mesh generation failed: {str(e)}")
 
-        # Export mesh to output directory
-        try:
-            output_filename = f"{image.filename.rsplit('.', 1)[0]}.glb"
-            output_path = OUTPUT_DIR / output_filename
-            mesh.export(str(output_path), include_normals=True)
-            logger.info(f"Mesh exported to: {output_path}")
-            
-            return FileResponse(
-                str(output_path),
-                media_type="model/gltf-binary",
-                filename=output_filename
-            )
-        except Exception as e:
-            logger.error(f"Error exporting mesh: {str(e)}")
-            raise HTTPException(status_code=500, detail=f"Failed to export mesh: {str(e)}")
+        # Return the generated mesh as a response
+        with tempfile.NamedTemporaryFile(suffix=".glb", delete=False) as temp_file:
+            mesh.export(temp_file.name, include_normals=True)
+            return FileResponse(temp_file.name, media_type="model/gltf-binary", filename=f"{image.filename.rsplit('.', 1)[0]}.glb")
             
     except HTTPException as he:
         raise he
