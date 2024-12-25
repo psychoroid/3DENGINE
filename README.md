@@ -1,6 +1,6 @@
 # 3DENGINE
 
-A collection of open-source AI-powered 3D model generation tools + backend API services used in psychoroid.com. This project integrates various 3D generation models for creating 3D assets from text and images.
+A collection of open-source AI-powered 3D model generation tools + backend API services used in [psychoroid.com](https://psychoroid.com). This project integrates 3D generation models for creating 3D assets from text and images.
 
 ## 🚀 Getting Started
 
@@ -12,5 +12,4 @@ A collection of open-source AI-powered 3D model generation tools + backend API s
 ### Get started
 
 1. Clone the repo
-2. Star the repo
-2. Enjoy.
+2. Enjoy
